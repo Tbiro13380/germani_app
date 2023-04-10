@@ -83,6 +83,10 @@
         </div>
     </div>
 
+    <p class="text-center mt-5">
+        Grupo Mega Peres
+    </p>
+
 	<script>
         $(document).ready(function(){
 
