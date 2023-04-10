@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .(/)?$ index.php
+
+<IfModule mod_php5.c>
+#  php_value magic_quotes_gpc                0
+#  php_value register_globals                0
+#  php_value session.auto_start              0
+#  php_value mbstring.http_input             pass
+#  php_value mbstring.http_output            pass
+#  php_value mbstring.encoding_translation   0
+#  php_value post_max_size 100M
+#  php_value upload_max_filesize 100M
+#  php_value memory_limit 100M
+#  php_value max_execution_time 3600
+#  php_value max_input_time 3600
+</IfModule>

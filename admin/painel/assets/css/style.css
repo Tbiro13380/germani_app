@@ -1,0 +1,76 @@
+
+/* Gerais */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+html {
+	overflow-x: hidden;
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+	scroll-behavior: smooth;
+	font-weight: 400;
+	font-family: 'Montserrat', sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: subpixel-antialiased;
+	color: #222;
+	line-height: 22px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	overflow-x: hidden;
+}
+
+#side_nav {
+	transition: all 0.3s;
+}
+
+.sidebar {
+	background-color: black;
+}
+
+.content {
+	width: 100%;
+	min-height: 100vh;
+}
+
+.sidebar a {
+	color: white;
+}
+
+.sidebar li.active {
+	background: #eee;
+	border-radius: 8px;
+}
+
+.sidebar li.active a,
+.sidebar li.active a:hover {
+	color: #000;
+}
+
+.sidebar li a {
+	color: #fff;
+}
+
+.content {
+	background-color: #0000001a;
+}
+
+@media (max-width: 767px) {
+	#side_nav {
+		margin-left: -250px;
+		position: fixed;
+		min-height: 100vh;
+		z-index: 1;
+	}
+
+	#side_nav.active {
+		margin-left: 0;
+	}
+}
+
+.form-control {
+	margin-bottom: 20px;
+}

@@ -1,0 +1,36 @@
+@media(max-width: 767px){
+	#brand-logo {
+		width: 20% !important;
+	}
+
+	#brand-logotext {
+		width: 60% !important;
+	}
+
+	.lost-mobile {
+		font-size: 12px;
+	}
+
+	.brand-name {
+		font-size: 12px !important;
+	}
+
+	
+	.radius-top p {
+		font-size: 12px;
+  	}
+
+	.radius-bottom p {
+		font-size: 12px;
+  	}
+
+	#radius-nav {
+		width: 90% !important;
+	}
+
+	body {
+		background-image: url('../img/body-mobile.png');
+		background-size: cover;
+		background-position: center;
+	}
+}
