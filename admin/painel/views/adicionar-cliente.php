@@ -21,6 +21,16 @@
 		<input type="text" class="form-control" id="senha" name="senha" />
 	</div>
 
+	Enviar email com os dados?
+	<div>
+		<label for="nao">Não</label>
+		<input type="checkbox" id="nao" checked name="sendmail" value="nao" onclick="document.getElementById('sim').checked = false;">
+	</div>
+	<div>
+		<label for="sim">Sim</label>
+		<input type="checkbox" id="sim" name="sendmail" onclick="document.getElementById('nao').checked = false;" value="sim">
+	</div>
+
 	<button onClick="return false;" id="addCliente" class="btn btn-success w-md-50 w-100  mt-4" type="submit" name="enviar">CADASTRAR</button>
 </form>
 

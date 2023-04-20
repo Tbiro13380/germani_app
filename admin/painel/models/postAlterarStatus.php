@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 include_once("../../../config/conexao.php");
 include_once("../../../config/funcoes.php");
@@ -7,19 +8,25 @@ include_once("../includes/validaSession.php");
 
 extract($_POST);
 
-if(!$postID){
+if(!$id){
 	die(json_encode(array("status" => false, "message" => "Erro")));
 }
 
-if(strlen($descricao) > 25){
-	die(json_encode(array("status" => false, "message" => "Tamanho limite de 25 caracteres atingido")));
+if(!$status){
+	die(json_encode(array("status" => false, "message" => "Erro")));
+}
+
+if($status == 'ativo'){
+	$ativo = 'Sim';
+} else {
+	$ativo = 'Nao';
 }
 
 update(	$conn, 
-	array("descricao"),
-	array($descricao),
+	array("ativo"),
+	array($ativo),
 	"posts",
-	"WHERE ID = {$postID}"
+	"WHERE ID = {$id}"
 );
 
 die(json_encode(array("status" => true, "message" => "Post atualizado")));

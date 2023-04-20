@@ -1,3 +1,9 @@
+<?php
+	$sql = "SELECT * FROM clientes WHERE ID = {$_SESSION['usuarioID']}";
+
+	$cliente = $conn->query($sql)->fetch(PDO::FETCH_OBJ);
+
+?>
 <section class="fixed-top">
 	<nav class="navbar shadow" style="background-color: #e2e0df">
 		<div class="container d-flex">
@@ -10,7 +16,7 @@
 				<li style="list-style: none;" class="nav-item ms-auto dropdown no-arrow">
 					<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
 						data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<h3 class="brand-name">Olá, <?php echo $_SESSION['usuarioNome'] ?></h3>
+						<h3 class="brand-name">Olá, <?php echo $cliente->nome ?></h3>
 					</a>
 					<!-- Dropdown - User Information -->
 					<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -65,11 +71,11 @@
 				$hora_atual = date("H");
 
 				if ($hora_atual >= 6 && $hora_atual < 12) {
-					echo "Bom dia! " . $_SESSION['usuarioNome'];
+					echo "Bom dia! " . $cliente->nome;
 				} elseif ($hora_atual >= 12 && $hora_atual < 18) {
-					echo "Boa tarde! " . $_SESSION['usuarioNome'];
+					echo "Boa tarde! " . $cliente->nome;
 				} else {
-					echo "Boa noite! " . $_SESSION['usuarioNome'];
+					echo "Boa noite! " . $cliente->nome;
 				}
 
 				?></h5>
@@ -78,13 +84,9 @@
 			</div>
 			<div class="modal-body">
 				<h5>Altere seus dados</h5>
-				<?php
-					$sql = "SELECT * FROM clientes WHERE ID = {$_SESSION['usuarioID']}";
 
-					$cliente = $conn->query($sql)->fetch(PDO::FETCH_OBJ);
-
-				?>
 				<form class="formPerfil">
+					<input type="hidden" name="id" value="<?php echo $cliente->ID ?>">
 					<div class="form-group w-md-50 w-100">
 						<label for="nome">Nome</label>
 						<input type="text" class="form-control" id="nome" name="nome" value="<?php echo $cliente->nome ?>" />

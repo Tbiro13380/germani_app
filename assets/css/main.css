@@ -8,7 +8,7 @@ html {
 body {
 	background: black;
 	font-size: 14px;
-  padding-top: 125px;
+  padding-top: 165px;
   padding-bottom: 65px;
 	font-weight: 400;
 	font-family: 'Montserrat', sans-serif;
@@ -21,6 +21,13 @@ body {
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	overflow-x: hidden;
+}
+
+@media(max-width: 767px){
+  body {
+    padding-top: 125px;
+    padding-bottom: 25px;
+  }
 }
 
 a {
@@ -261,7 +268,12 @@ a.back-to-top:hover, a.back-to-top:focus {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 99999;
 
+}
+
+.navbar {
+  z-index: 99999;
 }
 
 .dropdown .dropdown-menu {
@@ -408,8 +420,4 @@ a.back-to-top:hover, a.back-to-top:focus {
   #side_nav.active {
     margin-left: 0;
   }
-}
-
-.home {
-  position: relative;
 }

@@ -15,8 +15,8 @@
 		die(json_encode(array("status" => false, "message" => "Escreva a descrição do post")));
 	}
 
-	if(strlen($descricao) > 25){
-		die(json_encode(array("status" => false, "message" => "Tamanho limite de 25 caracteres atingido")));
+	if(strlen($descricao) > 30){
+		die(json_encode(array("status" => false, "message" => "Tamanho limite de 30 caracteres atingido")));
 	}
 
 	if(@$_FILES["fotos_post"]["name"] == false){

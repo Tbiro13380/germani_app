@@ -18,7 +18,7 @@
 </div>
 	<?php
 		$sql = "SELECT * FROM posts WHERE clienteID = {$clienteID} ORDER BY data ASC";
-		echo '<p class="d-flex justify-content-between py-3 fs-6">Exibindo todos os posts<span class="pull-right">Total: <strong style="font-size: 18px;">'.$conn->query($sql)->rowCount().'</strong></span></p>'."\n";
+		echo '<p class="d-flex justify-content-between py-3 fs-6">Exibindo todos os posts <span class="pull-right">Total: <strong style="font-size: 18px;">'.$conn->query($sql)->rowCount().'</strong></span></p>'."\n";
 		
 	if($conn->query($sql)->rowCount() == false){
 		echo '<br /><p class="alert alert-warning text-center">NENHUM POST ENCONTRADO</p>'."\n";
@@ -73,13 +73,43 @@
 
 								echo $dataCadastro;	
 							?></td>
-							<td>Ativo</td>
+							<td>
+								<div class="form-group w-md-50 w-100">
+									<select id="status-<?php echo $ln->ID ?>" name="status" data-id="<?php echo $ln->ID ?>" style="border: none">
+										<option value="ativo" <?php echo $ln->ativo == 'Sim' ? 'selected' : '' ?>>Ativo</option>
+										<option value="inativo" <?php echo $ln->ativo == 'Nao' ? 'selected' : '' ?>>Inativo</option>
+									</select>
+								</div>
+							</td>
 							<td>
 								<a href="/admin/painel/editar-post?ID=<?php echo $ln->ID; ?>&clienteID=<?php echo $clienteID ?>" class="" data-bs-toggle="tooltip" data-placement="top" title="Editar post"><span class="fa fa-pencil text-black pe-2"></span></a>
 								<a href="javascript:;" class="deletar-post" data-post-id="<?php echo $ln->ID; ?>" data-bs-toggle="tooltip" data-placement="top" title="Deletar post"><span class="fa fa-trash text-black pe-2"></span></a>
 								<a href="/admin/painel/post-fotos?ID=<?php echo $ln->ID; ?>&clienteID=<?php echo $clienteID ?>" class="posts" data-bs-toggle="tooltip" data-placement="top" title="Ver fotos do post"><span class="fa fa-camera text-black pe-2"></span></a>
 								<!-- <a href="javascript:;"  onClick="confirm('<h1>Deseja realmente deletar esse cliente</h1>Isso também apagará todas as compras e registros vinculados a esse cliente.', 'pages/clientes/deletar.html?ID=<?php echo $ln->ID; ?>')" class="btn btn-danger"  data-toggle="tooltip" data-placement="top" title="Deletar cliente"><span class="glyphicon glyphicon-trash"></span></a> -->
 							</td>
+							<script>
+								$(document).ready(function(){
+									$('#status-<?php echo $ln->ID ?>').change(function(){
+										var status = $(this).val();
+										var id = $(this).data('id');
+
+										$.ajax({
+											url: 'models/postAlterarStatus.php',
+											dataType: 'json',
+											data: {status: status, id: id},
+											type: 'POST',
+											success: function(result){
+												if(result.status){
+													Swal.fire({title: 'Sucesso', text: result.message, icon: 'success'});
+												} else {
+													Swal.fire({title: 'Atenção!', text: result.message, icon: 'error'})
+												}
+											} 
+										})
+
+									});
+								});
+							</script>
 						</tr><?php 
 					} ?>
 				</tbody>

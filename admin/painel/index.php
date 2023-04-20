@@ -146,6 +146,11 @@
               ><i class="fa-solid fa-users pe-2"></i>Clientes</a
             >
           </li>
+          <li class="<?php echo seo(false, 2) == 'usuarios' ? 'active' : '' ?>">
+            <a href="/admin/painel/usuarios" class="text-decoration-none px-2 py-2 d-block"
+              ><i class="fa-solid fa-user-lock pe-2"></i>Usuarios</a
+            >
+          </li>
           </li>
 		      <li>
             <a href="includes/sair.php" class="text-decoration-none px-2 mt-5 py-2 d-block"

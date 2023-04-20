@@ -831,7 +831,7 @@
 	}
     
     function sendMail($nomeDestino, $emailDestino, $emailRemetente, $assunto, $msg, PDO $conn, $arquivo = ""){
-        $montaMsg = '<div style="text-align: left"><img src="../assets/img/logo-n.png"></div>';
+        $montaMsg = '<div style="text-align: left"><img src="../assets/img/logo.png"></div>';
     
         $montaMsg .= '<br /><div style="font-family: Arial; color: #666; font-size: 14px;">'.$msg.'<br /><br />';
 		$mail = new PHPMailer;

@@ -1,15 +1,27 @@
 <style>
-	@media(min-width: 767px){
+	@media(min-width: 967px){
 		#info-post {
 			margin-right: 25%;
 		}
 	}
 
+	.carousel {
+		cursor: grab;
+	}
+
+	.sombreado {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0.8) 100%);
+	}
+	
 </style>
 <section class="home mb-3">
+	<div class="sombreado"></div>
 	<div class="container">
 		<?php 
-			$sqlPosts = "SELECT * FROM posts WHERE clienteID = {$_SESSION['usuarioID']} ORDER BY data DESC";
+			$sqlPosts = "SELECT * FROM posts WHERE clienteID = {$_SESSION['usuarioID']} AND ativo = 'Sim' ORDER BY data DESC";
 
 			if($conn->query($sqlPosts)->rowCount()) {
 				foreach($conn->query($sqlPosts)->fetchAll(PDO::FETCH_OBJ) as $post) {
@@ -34,7 +46,7 @@
 										</div>
 									</div>
 									<div class="photo mx-auto">
-										<img src="../../thumb.php?tipo=nor&amp;w=700&amp;h=500&amp;img=uploads/posts/<?php echo $img->imagem ?>" class="img-fluid rounded shadow">
+										<img src="../../thumb.php?tipo=nor&amp;w=700&amp;h=500&amp;img=uploads/posts/<?php echo $img->imagem ?>" class="img-fluid pinca rounded shadow">
 									</div>
 								</div>
 							<?php } else { ?>
@@ -79,7 +91,7 @@
 										<?php
 											foreach($conn->query($sqlImagens)->fetchAll(PDO::FETCH_OBJ) as $img) {
 										?>
-											<div><img src="../../thumb.php?tipo=nor&amp;w=700&amp;h=500&amp;img=uploads/posts/<?php echo $img->imagem ?>" class="img-fluid rounded shadow mx-auto"></div>
+											<div><img src="../../thumb.php?tipo=nor&amp;w=700&amp;h=500&amp;img=uploads/posts/<?php echo $img->imagem ?>" class="img-fluid pinca rounded shadow mx-auto"></div>
 										<?php } ?>
 									</div>
 								</div>
@@ -94,9 +106,23 @@
 											
 										});
 									});
+
+									var myImage = $('.pinca');
+
+									myImage.hammer();
+
+									myImage.on('pinch', function(event) {
+										// aumenta ou diminui o tamanho da imagem
+										var scale = event.scale;
+										myImage.css('transform', 'scale(' + scale + ')');
+									});
 								</script>
 						 	<?php } 
-						}
+						} else { ?>
+							<div class="alert alert-warning text-center">
+								Olá, <?php echo $_SESSION['usuarioNome'] ?>. Parece que ainda não foram feitas postagens em sua conta.
+							</div>
+						<?php }
 					}
 			} else { ?>
 				<div class="alert alert-warning text-center">
