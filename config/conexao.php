@@ -6,11 +6,6 @@ define("HOST", "localhost");
 define("BANCO", "germani_app");
 define("USER", "root");
 define("PASS", "");
-// SMTP
-//define("HOST_SMTP", "localhost");
-//define("EMAIL_SMTP", "noreply@lojasandalmaq.com.br");
-//define("SENHA_SMTP", "valente14");
-//define("PORTA_SMTP", 587);
 // Configuração de SSL
 define("SSL", false);
 // Base do site (Não colocar a última barra no domínio e sem http)
@@ -22,25 +17,6 @@ define('SYSTEM_SITE_DIR', str_replace(DIRECTORY_SEPARATOR,'/',dirname(dirname(__
 
 define("PASTA", "");
 define("PASTA_PAINEL", "painel");
-define("TOKEN_PS", "5F8D870487F64CDF9D5C851B851FE2E0");
-define("EMAIL_PS", "sac@lojasandalmaq.com.br");
-define("URL_RETORNO_PS", URL_SITE."/compra-finalizada");
-// Configurações do painel administrativo
-define("TITULO", "Painel Administrativo");
-define("AGENCIA", "Mega Peres");
-define("TELEFONE_AGENCIA", "(44)3031-4068");
-define("SITE_AGENCIA", "megaperes.com.br");
-define("NOME_SITE", "Plano Pag");
-define("PROGRAMADOR", "Guilherme Tiburcio");
-define("EMAIL_SUPORTE", "sac@planopag.com.br");
-define("EMAIL_SUPORTE_LOJA", "sac@planopag.com.br");
-// Configuração dos módulos TRUE OU FALSE
-define("CONFIGURACOES_PAINEL", true);
-define("CHAVE_ATIVACAO", true);
-define("MODULO_RELATORIOS", true);
-define("MODULO_ATENDIMENTO", true);
-
-
 
 try{
 	$conn = new PDO("mysql:host=".HOST.";dbname=".BANCO."", USER, PASS);
